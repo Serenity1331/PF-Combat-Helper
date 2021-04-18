@@ -403,8 +403,7 @@ li:hover {
 }
 
 .sneaky {
-    border: 3px solid darkred;
-    margin: 2px;
+    border: 2px solid darkred;
     background: url(images/sneakAttack-Hover.png) no-repeat;
     background-size: contain;
     
