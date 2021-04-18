@@ -34451,4 +34451,8 @@
     <Name>Grimlock(3pp)</Name>
     <id>3pp1</id>
   </Monster>
+  <Monster>
+    <Name>Zombie Basic (custom)</Name>
+    <id>3pp2</id>
+  </Monster>
 </ArrayOfMonster>
