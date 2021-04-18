@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Redressed&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+	<script src="./lib/math.js" type="text/javascript"></script>
+	<title></title>
+</head>
+<body>
+	<div class="container-main">
+		<div class="leftMenu">
+			<div class="btns">
+				<button class="addNewPlayer" data-tooltip="Add New Player"></button>
+				<button class="saveData" data-tooltip="Save Players"></button>
+				<button class="loadData" data-tooltip="Load Players"></button>
+				<button class="recoverAttacks" data-tooltip="Recover Attacks"></button>
+
+			</div>
+
+			<div class="innerMenus">
+				<div class="playerNames">
+
+					<div class="nameWrapper">
+						<input type="text" class="pName" 			 name="pName" autocomplete="off">
+						<input type="text" class="standardAC AC pink" 	 name="standardAC"  chosen="true" autocomplete="off">
+						<input type="text" class="touchAC AC " 		 name="touchAC" autocomplete="off">
+						<input type="text" class="ffAC AC" 			 name="ffAC" autocomplete="off">
+						<input type="text" class="bonusOrPenalty" name="bonusOrPenalty" autocomplete="off">
+						<div class="removeBtn"></div>
+					</div>
+
+					<div class="nameWrapper">
+						<input type="text" class="pName" 			 name="pName" autocomplete="off">
+						<input type="text" class="standardAC AC" 	 name="standardAC" autocomplete="off">
+						<input type="text" class="touchAC AC" 		 name="touchAC" autocomplete="off">
+						<input type="text" class="ffAC AC" 			 name="ffAC" autocomplete="off">
+						<input type="text" class="bonusOrPenalty" name="bonusOrPenalty" autocomplete="off">
+						<div class="removeBtn"></div>
+					</div>
+
+					<div class="nameWrapper">
+						<input type="text" class="pName" 		 	 name="pName" autocomplete="off">
+						<input type="text" class="standardAC AC" 	 name="standardAC" autocomplete="off">
+						<input type="text" class="touchAC AC" 	 	 name="touchAC" autocomplete="off">
+						<input type="text" class="ffAC AC" 		 	 name="ffAC" autocomplete="off">
+						<input type="text" class="bonusOrPenalty" name="bonusOrPenalty" autocomplete="off">
+						<div class="removeBtn"></div>
+					</div>
+
+					<div class="nameWrapper">
+						<input type="text" class="pName" 		 	 name="pName" autocomplete="off">
+						<input type="text" class="standardAC AC" 	 name="standardAC" autocomplete="off">
+						<input type="text" class="touchAC AC" 	 	 name="touchAC" autocomplete="off">
+						<input type="text" class="ffAC AC" 		 	 name="ffAC" autocomplete="off">
+						<input type="text" class="bonusOrPenalty" name="bonusOrPenalty" autocomplete="off">
+						<div class="removeBtn"></div>
+					</div>
+
+				</div>
+
+				<div class="atkResult">
+					<div class="result">
+						<span class="details attackDetails"></span>
+						<span class="details attackDetails"></span>
+					</div>
+					<div class="result">
+						<span class="details damageDetails"></span>
+						<span class="details damageDetails"></span>
+						<span class="details damageDetails"></span>
+					</div>
+				</div>
+
+				<div class="database">
+					<input type="text" class="searchBar" placeholder="Pick a monster...">
+					<ol class="monsterList"></ol>
+				</div>
+			</div>
+		</div>
+
+		<div class="centerMenu">
+			<fieldset class="encounter"></fieldset>
+		</div>
+
+		<div class="rightMenu">
+			<div class="mName">Monster</div>
+			<div class="basic">
+				<span class="hp attrNames"></span>
+				<span class="aura attrNames"></span>
+			</div>
+			<div class="aspects">
+				<span class="init attrNames"></span>
+				<span class="size attrNames"></span>
+				<span class="type attrNames"></span>
+			</div>
+			<div class="defences-1">
+				<span class="DR attrNames"></span>
+				<span class="immune attrNames"></span>
+				<span class="defensiveAbilities attrNames"></span>
+			</div>
+			<div class="defences-2">
+				<span class="SR attrNames"></span>
+				<span class="resist attrNames"></span>
+				<span class="weaknesses attrNames"></span>
+			</div>
+			<div class="speedSpaceReach attrNames">
+				<span class="speed attrNames"></span>
+				<span class="space attrNames"></span>
+				<span class="reach attrNames"></span>
+			</div>
+			<div class="combatManeuvers">
+				<span class="CMB attrNames"></span>
+				<span class="CMD attrNames"></span>
+			</div>
+			<div class="meleeFull attrNames"></div>
+			<div class="rangedFull attrNames"></div>
+			<div class="specialAttacks attrNames"></div>
+			<div class="specialAbilities attrNames"></div>
+			<div class="feats attrNames"></div>
+			<div class="languages attrNames"></div>
+			<div class="sq attrNames"></div>
+
+		
+		</div>
+	</div>
+
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
