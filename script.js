@@ -385,7 +385,7 @@ function loadPlayer(values) {
 
     let playerString = 
     `<div class="nameWrapper">
-        <input type="text" class="pName" name="pName" autocomplete="off" placeholder="Player name" value=${pName}>
+        <input type="text" class="pName" name="pName" autocomplete="off" placeholder="Character Name" value=${pName}>
         <input type="text" class="standardAC AC" name="standardAC" autocomplete="off" placeholder="AC" value=${standardAC}>
         <input type="text" class="touchAC AC" name="touchAC" autocomplete="off" placeholder="AC" value=${touchAC}>
         <input type="text" class="ffAC AC" name="ffAC" autocomplete="off" placeholder="AC" value=${ffAC}>
@@ -421,7 +421,7 @@ function recoverAttacksListener() {
 function addNewPlayer() {
     let playerString = 
         `<div class="nameWrapper">
-        <input type="text" class="pName"            name="pName"        autocomplete="off" placeholder="Player name">
+        <input type="text" class="pName"            name="pName"        autocomplete="off" placeholder="Character Name">
         <input type="text" class="standardAC AC"    name="standardAC"   autocomplete="off" placeholder="AC">
         <input type="text" class="touchAC AC"       name="touchAC"      autocomplete="off" placeholder="AC">
         <input type="text" class="ffAC AC"          name="ffAC"         autocomplete="off" placeholder="AC">
