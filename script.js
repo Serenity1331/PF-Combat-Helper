@@ -385,11 +385,11 @@ function loadPlayer(values) {
 
     let playerString = 
     `<div class="nameWrapper">
-        <input type="text" class="pName" name="pName" autocomplete="off"                   value=${pName}>
-        <input type="text" class="standardAC AC" name="standardAC" autocomplete="off"      value=${standardAC}>
-        <input type="text" class="touchAC AC" name="touchAC" autocomplete="off"            value=${touchAC}>
-        <input type="text" class="ffAC AC" name="ffAC" autocomplete="off"                  value=${ffAC}>
-        <input type="text" class="bonusOrPenalty" name="bonusOrPenalty" autocomplete="off" value=${bonusOrPenalty}>
+        <input type="text" class="pName" name="pName" autocomplete="off" placeholder="Player name" value=${pName}>
+        <input type="text" class="standardAC AC" name="standardAC" autocomplete="off" placeholder="AC" value=${standardAC}>
+        <input type="text" class="touchAC AC" name="touchAC" autocomplete="off" placeholder="AC" value=${touchAC}>
+        <input type="text" class="ffAC AC" name="ffAC" autocomplete="off" placeholder="AC" value=${ffAC}>
+        <input type="text" class="bonusOrPenalty" name="bonusOrPenalty" autocomplete="off" placeholder="AC bonus" value=${bonusOrPenalty}>
         <div class="removeBtn"></div>
     </div>`;
 
@@ -421,11 +421,11 @@ function recoverAttacksListener() {
 function addNewPlayer() {
     let playerString = 
         `<div class="nameWrapper">
-            <input type="text" class="pName" 			 name="pName" autocomplete="off">
-            <input type="text" class="standardAC AC" 	 name="standardAC" autocomplete="off">
-            <input type="text" class="touchAC AC" 		 name="touchAC" autocomplete="off">
-            <input type="text" class="ffAC AC" 			 name="ffAC" autocomplete="off">
-            <input type="text" class="bonusOrPenalty"    name="bonusOrPenalty" autocomplete="off">
+        <input type="text" class="pName"            name="pName"        autocomplete="off" placeholder="Player name">
+        <input type="text" class="standardAC AC"    name="standardAC"   autocomplete="off" placeholder="AC">
+        <input type="text" class="touchAC AC"       name="touchAC"      autocomplete="off" placeholder="AC">
+        <input type="text" class="ffAC AC"          name="ffAC"         autocomplete="off" placeholder="AC">
+        <input type="text" class="bonusOrPenalty"   name="bonusOrPenalty" autocomplete="off" placeholder="AC bonus">
         </div>`;
 
     let playerNames = document.querySelector('.playerNames');

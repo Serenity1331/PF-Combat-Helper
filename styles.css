@@ -40,7 +40,7 @@ body {
 
 .leftMenu {
     width: 25%;
-    min-width: 400px;
+    min-width: 420px;
     height: 100%;
     background: black;
 }
@@ -224,7 +224,7 @@ body {
 }
 
 .bonusOrPenalty {
-    min-width: 50px;
+    min-width: 70px;
 }
 
 .encounter {
