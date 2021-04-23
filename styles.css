@@ -62,6 +62,34 @@ body {
     overflow-x: hidden;
 }
 
+.damageMonster {
+
+    background: #2d3333;
+    /* border: 2px solid red; */
+    border-radius: 10px;
+    color: #ff002a;
+    width: 350px;
+    padding: 10px;
+
+    text-align: center;
+    display: block;
+    margin: auto;
+    outline: 0;
+    font-size: 16px;
+    font-weight: bold;  
+}
+
+.stickyDamage {
+    position: sticky;
+    top: 12px;
+    z-index: 2;
+}
+
+.stickyDamage .damageMonster::-webkit-input-placeholder {
+    font-weight: normal;
+
+}
+
 .btns {
     display: flex;
     justify-content: space-evenly;
@@ -179,7 +207,7 @@ body {
 }
 
 .database {
-    min-height: 10%;
+    min-height: 175px;
     /* max-height: calc(100% - 162px - 35px - 15px - var(--players)*43px); */
     max-height: calc(100% - 162px - 35px - 51px - var(--players)*41px);
 
@@ -244,9 +272,10 @@ body {
 }
 
 .encounter {
-    min-height: 100px;
     margin: 0 auto;
+    margin-top: 10px;
     border-radius: 0px;
+    position: relative;
 }
 
 .monsterShort {

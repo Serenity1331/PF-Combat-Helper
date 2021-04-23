@@ -555,7 +555,7 @@ function decipherString(parent, attackType) {
   
     let res = [];
     let originalString = parent.querySelector(attackType).innerHTML;
-
+    
     let splitByOr = originalString.split(') or '); // to avoid splitting strings like "alchemical or silver dagger +2"
     let splitByComa = splitByOr[0].split('),').filter(e => e ? e : 0);
     let trimmedArr = splitByComa.map(e => e.trim()); 
@@ -624,6 +624,7 @@ function createRemoveBtn(which='player') {
     
     div.addEventListener('click', function() {
         this.parentNode.remove();
+        setPlayerNumberToRoot();
     })
 
     return div;
@@ -959,6 +960,23 @@ function otherRoll(type, bonus, randomRoll) {
     clearResults();
     let res = document.querySelector('.damageDetails');
     res.innerHTML = `${type}: ${randomRoll} + ${bonus} = ${randomRoll + bonus}`;
+}
+
+function damageTheMonsterListener() {
+    try {
+        let damageField = document.querySelector('.damageMonster');
+        let chosenMonster = document.querySelector('.darkBlue .monsterHP');
+        let damage = damageField.value;
+        let hp = chosenMonster.value;
+    
+        let result = hp - damage;
+        chosenMonster.value = result;
+        damageField.value = '';
+    } catch(err) {
+        console.log('Please choose a monster before applying damage to it');
+    }
+    
+
 }
 
 // SUPPLEMENTARY FUNCTIONS
