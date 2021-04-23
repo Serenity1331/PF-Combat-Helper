@@ -348,15 +348,18 @@ function saveDataListener() {
 
 function loadData() {
     let players = JSON.parse(localStorage.getItem('PF_Heroes'));
-    removePlayers();
 
-    for (let player of players) {
-        player = JSON.parse(player);
-        loadPlayer(player);
+    if (players) {
+        removePlayers();
+
+        for (let player of players) {
+            player = JSON.parse(player);
+            loadPlayer(player);
+        }
+    
+        setPlayerNumberToRoot();
+        removePlayerListener();
     }
-
-    setPlayerNumberToRoot();
-    removePlayerListener();
 }
 
 function setPlayerNumberToRoot() {
@@ -364,13 +367,13 @@ function setPlayerNumberToRoot() {
     document.documentElement.style.setProperty("--players", `${numOfPlayers}`);
 }
 
-function loadDataListener() {
-    let btn = document.querySelector('.loadData');
+// function loadDataListener() {
+//     let btn = document.querySelector('.loadData');
 
-    btn.addEventListener('click', function() {
-        loadData();
-    })
-}
+//     btn.addEventListener('click', function() {
+//         loadData();
+//     })
+// }
 
 function removePlayers() {
     let players = document.querySelectorAll(".nameWrapper");
@@ -452,10 +455,11 @@ function init() {
     addNewPlayerListener();
     addSearchListener();
     saveDataListener();
-    loadDataListener();
+    // loadDataListener();
     choosePlayerListener();
     removePlayerListener();
     recoverAttacksListener()
+    loadData();
 }
 
 async function extractData(id) {
@@ -968,10 +972,13 @@ function damageTheMonsterListener() {
         let chosenMonster = document.querySelector('.darkBlue .monsterHP');
         let damage = damageField.value;
         let hp = chosenMonster.value;
-    
         let result = hp - damage;
-        chosenMonster.value = result;
-        damageField.value = '';
+
+        if (!isNaN(result)) {
+            chosenMonster.value = result;
+            damageField.value = '';
+        }
+         
     } catch(err) {
         console.log('Please choose a monster before applying damage to it');
     }

@@ -65,9 +65,9 @@ body {
 .damageMonster {
 
     background: #2d3333;
-    /* border: 2px solid red; */
     border-radius: 10px;
-    color: #ff002a;
+    color: white;
+
     width: 350px;
     padding: 10px;
 
@@ -76,12 +76,11 @@ body {
     margin: auto;
     outline: 0;
     font-size: 16px;
-    font-weight: bold;  
 }
 
 .stickyDamage {
     position: sticky;
-    top: 12px;
+    top: 20px;
     z-index: 2;
 }
 
