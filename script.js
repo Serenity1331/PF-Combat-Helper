@@ -459,6 +459,7 @@ function init() {
     choosePlayerListener();
     removePlayerListener();
     recoverAttacksListener()
+    damagingMonstersListener()
     loadData();
 }
 
@@ -966,7 +967,8 @@ function otherRoll(type, bonus, randomRoll) {
     res.innerHTML = `${type}: ${randomRoll} + ${bonus} = ${randomRoll + bonus}`;
 }
 
-function damageTheMonsterListener() {
+function damageMonster() {
+
     try {
         let damageField = document.querySelector('.damageMonster');
         let chosenMonster = document.querySelector('.darkBlue .monsterHP');
@@ -980,10 +982,21 @@ function damageTheMonsterListener() {
         }
          
     } catch(err) {
-        console.log('Please choose a monster before applying damage to it');
+        console.log('Please choose a monster before applying damage');
     }
-    
 
+}
+
+function damagingMonstersListener() {
+
+    let damageField = document.querySelector('.damageMonster');
+    damageField.addEventListener('keypress', function(e) {
+
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            damageMonster();
+        }
+    })
 }
 
 // SUPPLEMENTARY FUNCTIONS
