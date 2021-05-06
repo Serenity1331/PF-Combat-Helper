@@ -5,6 +5,9 @@
 
 :root {
     --players: 4;
+    --leftMenu-min-width: 390px;
+    --centerMenu-min-width: 600px;
+    --centerMenu-min-width-media-1300: 400px;
 }
 
 body {
@@ -40,8 +43,8 @@ body {
 }
 
 .leftMenu {
-    width: 25%;
-    min-width: 390px;
+    /* width: 25%; */
+    min-width: var(--leftMenu-min-width);
     height: 100%;
     background: black;
 }
@@ -57,9 +60,11 @@ body {
 
 .centerMenu {
     background: #494988;
-    min-width: 580px;
+    /* min-width: var(--centerMenu-min-width); */
+    min-width: 40%;
     overflow: scroll;
     overflow-x: hidden;
+
 }
 
 .damageMonster {
@@ -149,10 +154,13 @@ body {
 
 .rightMenu {
     background: black;
-    width: calc(100% - 580px - 390px);
+    /* width: calc(100% - 580px - 390px); */
     color: white;
     overflow: scroll;
     overflow-x: hidden;
+    /* width: calc(100% - var(--leftMenu-min-width) - var(--centerMenu-min-width)); */
+    /* width: 35%; */
+    width: calc(100% - 390px - 35%);
 }
 
 .playerNames,
@@ -256,11 +264,13 @@ body {
 }
 
 .monsterShort {
-    margin: 10px 5px;
+    /* margin: 10px 5px; */
     border-radius: 10px;
     position: relative;
     border: 2px solid #0094FF;
     background: black;
+    max-width: 520px;
+    margin: 10px auto;
 }
 
 .monsterShort legend {
@@ -438,6 +448,7 @@ li:hover {
 .rollAttack {
     background: url(images/meleeAttack.png) no-repeat;
     background-size: contain;
+    transition: 0.4s;
 }
 
 .rollAttack:hover {
@@ -468,6 +479,7 @@ li:hover {
 .rollRangedAttack {
     background: url(images/rangedAttack.png) no-repeat;
     background-size: contain;
+    transition: 0.5s;
 }
 
 .rollRangedAttack:hover {
@@ -699,8 +711,31 @@ li:hover {
 }
 
 @media (max-width: 1300px) {
+    .centerMenu {
+        min-width: 450px;
+    }
+    
+    .monsterAC {
+        width: 16px;
+    }
 
-    li {
+    .monsterShort {
+        width: 380px;
+    }
+
+    .rightMenu {
+        /* width: calc(100% - var(--leftMenu-min-width) - var(--centerMenu-min-width-media-1300)); */
+        width: calc(100% - var(--leftMenu-min-width)) - 450px;  
+    }
+
+}
+
+
+/* -----------Old version------------- */
+
+/* @media (max-width: 1300px) { */
+
+    /* li {
         font-size: 12px;
     }
 
@@ -718,9 +753,8 @@ li:hover {
         border: 1px solid rgb(31, 116, 185);
         padding: 5px;
         border-top: none;
-        /* border-right: none; */
-    }
-    
+    } */
+/*     
     .nameWrapper:last-of-type {
         border-bottom: none;
     }
@@ -731,9 +765,9 @@ li:hover {
     
     .AC {
         order: 5;
-    }
+    } */
 
-    .centerMenu {
+    /* .centerMenu {
         min-width: calc(580px - 154px);
     }
 
@@ -756,9 +790,9 @@ li:hover {
 
     .removeBtn {
         order: 6;
-    }
-}
-
+    } 
+}*/
+/* 
 @media (max-width: 1000px) {
 
     .leftMenu {
@@ -863,19 +897,19 @@ li:hover {
         margin: 0 19px;
     }
     
-    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    ::-webkit-input-placeholder { 
         font-size: 12px;
     }
 
-    ::-moz-placeholder { /* Firefox 19+ */
+    ::-moz-placeholder {
         font-size: 12px;
     }
 
-    :-ms-input-placeholder { /* IE 10+ */
+    :-ms-input-placeholder { 
         font-size: 12px;
     }
 
-    :-moz-placeholder { /* Firefox 18- */
+    :-moz-placeholder {
         font-size: 12px;
     }
 
@@ -889,4 +923,4 @@ li:hover {
     .rightMenu {
         overflow: hidden;
     }
-}
+} */
