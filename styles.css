@@ -35,19 +35,19 @@ body {
 .container-main {
     display: flex;
     height: 100vh;
+    /* width: 100vw; */
     overflow: hidden;
 }
 
 .leftMenu {
     width: 25%;
-    min-width: 420px;
+    min-width: 390px;
     height: 100%;
     background: black;
 }
 
 .innerMenus {
     background: #262832;
-    /* background: black; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -57,20 +57,17 @@ body {
 
 .centerMenu {
     background: #494988;
-    width: 40%;
+    min-width: 580px;
     overflow: scroll;
     overflow-x: hidden;
 }
 
 .damageMonster {
-
     background: #2d3333;
     border-radius: 10px;
     color: white;
-
     width: 350px;
     padding: 10px;
-
     text-align: center;
     display: block;
     margin: auto;
@@ -86,7 +83,6 @@ body {
 
 .stickyDamage .damageMonster::-webkit-input-placeholder {
     font-weight: normal;
-
 }
 
 .btns {
@@ -96,20 +92,17 @@ body {
 
 .addNewPlayer,
 .saveData,
-.loadData,
 .recoverAttacks {
-    width: 25px;
-    height: 45px;
+    width: 20px;
+    height: 40px;
     transition: 0.4s;
     position: relative;
     padding: 0;
-    margin: 0;
     outline: 0;
 }
 
 .addNewPlayer:hover::after,
 .saveData:hover::after,
-.loadData:hover::after,
 .recoverAttacks:hover::after {
     content: attr(data-tooltip);
     color: white;
@@ -144,17 +137,6 @@ body {
     background-size: contain;
 }
 
-.loadData {
-    background: url(images/loadData.png) no-repeat center;
-    background-size: contain;
-
-}
-
-.loadData:hover {
-    background: url(images/loadData-Hover.png) no-repeat center;
-    background-size: contain;
-}
-
 .recoverAttacks {
     background: url(images/refresh.png) no-repeat center;
     background-size: contain;
@@ -167,7 +149,7 @@ body {
 
 .rightMenu {
     background: black;
-    width: 35%;
+    width: calc(100% - 580px - 390px);
     color: white;
     overflow: scroll;
     overflow-x: hidden;
@@ -188,15 +170,13 @@ body {
     margin-top: 5px;
     overflow: scroll;
     overflow-x: hidden;
-    max-height: 341px;
+    max-height: 287px;
     border: none;
     background: none;
 }
 
 .atkResult {
-    /* min-height: 24%; */
     min-height: 160px;
-    /* max-height: 160px; */
     color: lightsteelblue;
     text-align: center;
     display: flex;
@@ -206,16 +186,14 @@ body {
 }
 
 .database {
-    min-height: 175px;
-    /* max-height: calc(100% - 162px - 35px - 15px - var(--players)*43px); */
-    max-height: calc(100% - 162px - 35px - 51px - var(--players)*41px);
-
+    min-height: 210px;
+    max-height: calc(100% - 225px - var(--players)*41px);
     overflow: hidden;
 }
 
 .nameWrapper {
     display: flex;
-    justify-content: space-evenly;
+    /* justify-content:space-around; */
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -246,8 +224,8 @@ body {
 }
 
 .pName {
-    min-width: 100px;
-    font-size: 18px;
+    width: 105px;
+    font-size: 16px;
     background: black;
     color: #e0811f;
     outline: 0;
@@ -392,22 +370,13 @@ li:hover {
     width: max-content;
     position: absolute;
     top: -35px;
+    left: 10px;
     background: rgb(49, 48, 58);
     border-radius: 5px;
     padding: 10px;
     font-size: 12px;
     z-index: 1;
 }
-
-.div-HP:hover::before {
-    left: 10px;
-}
-
-.div-AC:hover::before {
-    left: 60px;
-}
-
-
 
 .rollAttack, 
 .rollRangedAttack, 
@@ -496,10 +465,6 @@ li:hover {
     z-index: 1;
 }
 
-.rollRangedAttack:hover::after {
-    top: 35px;
-}
-
 .rollRangedAttack {
     background: url(images/rangedAttack.png) no-repeat;
     background-size: contain;
@@ -545,12 +510,23 @@ li:hover {
     transform: scale(1.25);
 }
 
+.attackFields {
+    display: flex;
+    justify-content: center;
+    
+}
+
 .firstLine, 
 .attackLine {
     display: block;
     padding: 2px;
     margin: 2px;
     text-align: center;
+}
+
+.attackLine {
+    /* margin-left: 5px; */
+    padding-left: 5px;
 }
 
 .result {
@@ -722,3 +698,195 @@ li:hover {
     color: rgb(237 130 255);
 }
 
+@media (max-width: 1300px) {
+
+    li {
+        font-size: 12px;
+    }
+
+    .leftMenu {
+        min-width: calc(390px - 70px - 20px); 
+    }
+
+    .playerNames {
+        min-height: 363px;
+    }
+
+    .nameWrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+        border: 1px solid rgb(31, 116, 185);
+        padding: 5px;
+        border-top: none;
+        /* border-right: none; */
+    }
+    
+    .nameWrapper:last-of-type {
+        border-bottom: none;
+    }
+
+    .pName {
+        width: 120px;
+    }
+    
+    .AC {
+        order: 5;
+    }
+
+    .centerMenu {
+        min-width: calc(580px - 154px);
+    }
+
+    .rightMenu {
+        width: calc(100% - 580px - 147px)
+    }
+
+    .monsterAC {
+        width: 16px;
+    }
+
+    .atkResult {
+        height: 165px;
+    }
+
+    .database {
+        max-height: 100px;
+        min-height: 150px;
+    }
+
+    .removeBtn {
+        order: 6;
+    }
+}
+
+@media (max-width: 1000px) {
+
+    .leftMenu {
+        min-width: 270px;
+    }
+
+    .playerNames {
+        min-height: 310px;
+        margin-bottom: 0;
+    }
+
+    .nameWrapper:last-of-type {
+        padding-bottom: 0;
+    }
+
+    .pName {
+        font-size: 14px;
+    }
+
+    .pName,
+    .AC,
+    .bonusOrPenalty {
+        border: 2px solid #0094ff;
+        padding: 5px;
+    }
+
+    .AC,
+    .bonusOrPenalty {
+        font-size: 12px;
+    }
+
+    .centerMenu {
+        min-width: 100px;
+    }
+
+    .monsterShort {
+        padding-bottom: 0;
+        width: 290px;
+    }
+
+    .monsterName {
+        font-size: 16px;
+    }
+
+    .monsterHP,
+    .monsterAC {
+        font-size: 12px;
+    }
+
+    .monsterHP {
+        width: 20px;
+    }
+
+    .monsterAC {
+        width: 14px;
+    }
+
+    .attackLine {
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    }
+
+    .encounter {
+        padding: 1px;
+    }
+
+    .atkResult {
+        font-size: 14px;
+        margin-top: 3px;
+    }
+
+    .rightMenu {
+        width: calc(100% - 580px - 30px);
+        font-size: 14px;
+    }
+
+    .database {
+        min-height: 200px;
+    }
+
+    .rollAttack, 
+    .rollRangedAttack, 
+    .rollSavingThrow,
+    .disabledMelee,
+    .disabledRanged,
+    .baseCMB,
+    .sneakAttack {
+        width: 30px;
+        height: 30px;
+    }
+
+    .closeBtn {
+        width: 15px;
+        height: 15px;
+    }
+
+    .damageMonster {
+        font-size: 12px;
+        width: 270px;
+        margin: 0 19px;
+    }
+    
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        font-size: 12px;
+    }
+
+    ::-moz-placeholder { /* Firefox 19+ */
+        font-size: 12px;
+    }
+
+    :-ms-input-placeholder { /* IE 10+ */
+        font-size: 12px;
+    }
+
+    :-moz-placeholder { /* Firefox 18- */
+        font-size: 12px;
+    }
+
+    .mName {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .rightMenu {
+        overflow: hidden;
+    }
+}

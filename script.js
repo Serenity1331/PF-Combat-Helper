@@ -81,22 +81,31 @@ function showFullMonsterData(obj) {
 function createMonsterFieldset(data) {
 
     let fSet = document.createElement('fieldset');
+    let attackFields = document.createElement('div');
+
     let legend = createMonsterTitle(data.name); 
     let closeBtn = createRemoveBtn('monster');
     let firstField = createFirstDataField(data);
     let secondField = createAttackDataField(data, 'Melee');
     let thirdField = createAttackDataField(data, 'Ranged');
 
+    attackFields.appendChild(secondField);
+    attackFields.appendChild(thirdField);
+
+    // if (thirdField) {
+    //     attackFields.appendChild(thirdField);
+    // }
+    attackFields.classList.add('attackFields');
+
     fSet.appendChild(closeBtn);
     fSet.appendChild(legend);
     fSet.appendChild(firstField);
-    fSet.appendChild(secondField);
-    fSet.appendChild(thirdField);
+    fSet.appendChild(attackFields);
     fSet.classList.add('monsterShort');
 
     fSet.addEventListener('click', function(e) {
         
-        let lst = ['monsterShort', 'firstLine', 'attackLine']; //to avoid event bubbling from inputs
+        let lst = ['monsterShort', 'firstLine', 'attackLine', 'attackFields']; //to avoid event bubbling from inputs
         if (lst.includes(e.target.className)) {
             clearMonsterBgColors();
             this.classList.add('darkBlue');
@@ -134,7 +143,6 @@ function createAttackBtns(object, attackType, specialAttacks = null, attackNumbe
             sneakDmg = decodeSneakAttack(specialAttacks);
         }
 
-        
         let arr = hitOrMiss(object, attackNumber, sneakDmg);
         
         showAttackResults(arr);
@@ -968,7 +976,6 @@ function otherRoll(type, bonus, randomRoll) {
 }
 
 function damageMonster() {
-
     try {
         let damageField = document.querySelector('.damageMonster');
         let chosenMonster = document.querySelector('.darkBlue .monsterHP');
