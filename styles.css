@@ -1,0 +1,961 @@
+* {
+  border: 0;
+  margin: 0;
+}
+
+:root {
+  --players: 4;
+  --leftMenu-min-width: 390px;
+  --centerMenu-min-width: 600px;
+  --centerMenu-min-width-media-1300: 400px;
+}
+
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+  font-family: 'Roboto', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+          box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+  background: #2f3a39;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #347896;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2988b1;
+}
+
+.container-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.leftMenu {
+  min-width: var(--leftMenu-min-width);
+  height: 100%;
+  background: black;
+}
+
+.centerMenu {
+  background: #494988;
+  /* min-width: var(--centerMenu-min-width); */
+  min-width: 40%;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.damageMonster {
+  background: #2d3333;
+  border-radius: 10px;
+  color: white;
+  width: 350px;
+  padding: 10px;
+  text-align: center;
+  display: block;
+  margin: auto;
+  outline: 0;
+  font-size: 16px;
+}
+
+.stickyDamage {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 12px;
+  z-index: 2;
+}
+
+.stickyDamage .damageMonster::-webkit-input-placeholder {
+  font-weight: normal;
+}
+
+.btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.addNewPlayer,
+.saveData,
+.recoverAttacks {
+  width: 20px;
+  height: 40px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  position: relative;
+  padding: 0;
+  outline: 0;
+}
+
+.addNewPlayer:hover::after,
+.saveData:hover::after,
+.recoverAttacks:hover::after {
+  content: attr(data-tooltip);
+  color: white;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  position: absolute;
+  top: 35px;
+  left: 10px;
+  background: #31303a;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 12px;
+  z-index: 1;
+}
+
+.addNewPlayer {
+  background: url(images/addPlayer.png) no-repeat center;
+  background-size: contain;
+}
+
+.addNewPlayer:hover {
+  background: url(images/addPlayer-Hover.png) no-repeat center;
+  background-size: contain;
+}
+
+.saveData {
+  background: url(images/save.png) no-repeat center;
+  background-size: contain;
+}
+
+.saveData:hover {
+  background: url(images/save-Hover.png) no-repeat center;
+  background-size: contain;
+}
+
+.recoverAttacks {
+  background: url(images/refresh.png) no-repeat center;
+  background-size: contain;
+}
+
+.recoverAttacks:hover {
+  background: url(images/refresh-Hover.png) no-repeat center;
+  background-size: contain;
+}
+
+.rightMenu {
+  background: black;
+  /* width: calc(100% - 580px - 390px); */
+  color: white;
+  overflow: scroll;
+  overflow-x: hidden;
+  /* width: calc(100% - var(--leftMenu-min-width) - var(--centerMenu-min-width)); */
+  /* width: 35%; */
+  width: calc(100% - 390px - 35%);
+}
+
+.innerMenus {
+  background: #262832;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  height: 100vh;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.innerMenus .playerNames,
+.innerMenus .atkResult,
+.innerMenus .database {
+  border: 1px solid #494988;
+  border-radius: 10px;
+  margin: 5px 10px;
+}
+
+.innerMenus .playerNames {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 5px;
+  overflow: scroll;
+  overflow-x: hidden;
+  max-height: 287px;
+  border: none;
+}
+
+.innerMenus .atkResult {
+  min-height: 160px;
+  color: lightsteelblue;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  /* align horizontal */
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* align vertical */
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: black;
+}
+
+.innerMenus .database {
+  min-height: 210px;
+  max-height: calc(100% - 225px - var(--players)*41px);
+  overflow: hidden;
+}
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  font-size: 14px;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: 14px;
+}
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  font-size: 14px;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  font-size: 14px;
+}
+
+.nameWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.nameWrapper input {
+  border: 2px solid #0094ff;
+  margin: 2px;
+  padding: 7px;
+  text-align: center;
+  border-radius: 10px;
+  background: black;
+}
+
+.nameWrapper .pName {
+  width: 105px;
+  font-size: 16px;
+  color: #e0811f;
+  outline: 0;
+}
+
+.nameWrapper .AC, .nameWrapper .bonusOrPenalty {
+  width: 20px;
+  font-size: 14px;
+  outline: 0;
+  color: white;
+}
+
+.nameWrapper .bonusOrPenalty {
+  min-width: 70px;
+}
+
+.nameWrapper .blue {
+  background: #2196f3;
+  color: black;
+  font-weight: bold;
+}
+
+.encounter {
+  margin: 0 auto;
+  margin-top: 10px;
+  border-radius: 0px;
+  position: relative;
+}
+
+.monsterShort {
+  border-radius: 10px;
+  position: relative;
+  border: 2px solid #0094FF;
+  max-width: 520px;
+  margin: 10px auto;
+  background: black;
+}
+
+.monsterShort legend {
+  min-width: 200px;
+  padding: 5px;
+  background: inherit;
+  border-bottom: 1px solid #0094FF;
+  border-radius: 5px;
+  color: #e0811f;
+}
+
+.monsterShort .monsterName {
+  font-size: 18px;
+  text-align: center;
+}
+
+.monsterShort .monsterHP, .monsterShort .monsterAC {
+  background: inherit;
+  margin: 3px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 2px solid #0094FF;
+  color: white;
+  text-align: center;
+  outline: 0;
+}
+
+.monsterShort .monsterAC {
+  width: 170px;
+}
+
+.monsterShort .monsterHP {
+  max-width: 30px;
+}
+
+.monsterShort:hover {
+  -webkit-box-shadow: 1px 1px 15px #4786ad;
+          box-shadow: 1px 1px 15px #4786ad;
+}
+
+.darkBlue {
+  background: #1b124b;
+}
+
+.monsterList {
+  list-style-type: none;
+  padding: 0;
+  height: calc(100% - 35px);
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.searchBar {
+  width: 94%;
+  height: 35px;
+  padding-left: 10px;
+  color: white;
+  outline: 0;
+  background-color: black;
+}
+
+li {
+  font-size: 14px;
+  padding: 5px;
+  border-top: 1px solid #494988;
+  background: black;
+  color: #e0811f;
+}
+
+li:hover {
+  background: #1b124b;
+  color: white;
+  cursor: pointer;
+}
+
+.div-HP, .div-AC {
+  display: inline-block;
+  position: relative;
+}
+
+.div-HP:hover::before, .div-AC:hover::before {
+  content: attr(data-tooltip);
+  color: white;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  position: absolute;
+  top: -35px;
+  left: 10px;
+  background: #31303a;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 12px;
+  z-index: 1;
+}
+
+.disabledMelee {
+  background: url(images/meleeAttackDisabled.png) no-repeat;
+  background-size: contain;
+}
+
+.disabledRanged {
+  background: url(images/rangedAttackDisabled.png) no-repeat;
+  background-size: contain;
+}
+
+.rollAttack,
+.rollRangedAttack,
+.rollSavingThrow,
+.disabledMelee,
+.disabledRanged,
+.baseCMB,
+.sneakAttack {
+  display: inline-block;
+  vertical-align: middle;
+  height: 35px;
+  width: 35px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.rollAttack:hover::after,
+.rollRangedAttack:hover::after,
+.rollSavingThrow:hover::after,
+.disabledMelee:hover::after,
+.disabledRanged:hover::after,
+.baseCMB:hover::after,
+.sneakAttack:hover::after {
+  content: attr(data-tooltip);
+  color: white;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  position: absolute;
+  top: -35px;
+  background: #31303a;
+  border-radius: 5px;
+  padding: 5px;
+  left: -25px;
+  font-size: 11px;
+  z-index: 1;
+}
+
+.rollSavingThrow,
+.baseCMB,
+.sneakAttack {
+  margin: 2px;
+  margin-left: 5px;
+}
+
+.sneakAttack {
+  background: url(images/sneakAttack.png) no-repeat;
+  background-size: contain;
+  border-radius: 10px;
+  border: 2px solid gray;
+}
+
+.sneakAttack:hover {
+  background: url(images/sneakAttack-Hover.png) no-repeat;
+  background-size: contain;
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
+
+.sneaky {
+  border: 2px solid darkred;
+  background: url(images/sneakAttack-Hover.png) no-repeat;
+  background-size: contain;
+}
+
+.baseCMB {
+  margin-left: 15px;
+  background: url(images/grapple.png) no-repeat;
+  background-size: contain;
+}
+
+.baseCMB:hover {
+  background: url(images/grapple-Hover.png) no-repeat;
+  background-size: contain;
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
+
+.rollAttack {
+  background: url(images/meleeAttack.png) no-repeat;
+  background-size: contain;
+}
+
+.rollAttack:hover {
+  background: url(images/meleeAttack-Hover.png) no-repeat;
+  background-size: contain;
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
+
+.rollRangedAttack {
+  background: url(images/rangedAttack.png) no-repeat;
+  background-size: contain;
+}
+
+.rollRangedAttack:hover {
+  background: url(images/rangedAttack-Hover.png) no-repeat;
+  background-size: contain;
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
+
+#fort {
+  background: url(images/fort.png) no-repeat;
+  background-size: contain;
+}
+
+#fort:hover {
+  background: url(images/fort-hover.png) no-repeat;
+  background-size: contain;
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
+
+#ref {
+  background: url(images/ref.png) no-repeat;
+  background-size: contain;
+}
+
+#ref:hover {
+  background: url(images/ref-hover.png) no-repeat;
+  background-size: contain;
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
+
+#will {
+  background: url(images/will.png) no-repeat;
+  background-size: contain;
+}
+
+#will:hover {
+  background: url(images/will-hover.png) no-repeat;
+  background-size: contain;
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
+
+.firstLine,
+.attackLine {
+  display: block;
+  padding: 2px;
+  margin: 2px;
+  text-align: center;
+}
+
+.attackFields {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.attackLine {
+  padding-left: 5px;
+}
+
+.result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  line-height: 25px;
+}
+
+.attackDetails {
+  color: gray;
+}
+
+.damageDetails {
+  color: orange;
+}
+
+.closeBtn {
+  position: absolute;
+  right: 8px;
+  top: -5px;
+  height: 20px;
+  width: 20px;
+  background: url(images/closeButton.png) no-repeat;
+  background-size: contain;
+  margin: 0;
+  padding: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.closeBtn:hover {
+  background: url(images/closeButton-Hover.png) no-repeat;
+  background-size: contain;
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
+
+.removeBtn {
+  min-height: 10px;
+  min-width: 8px;
+  background: url(images/minus.png) no-repeat center;
+  background-size: contain;
+  margin: 0;
+  padding: 0;
+  margin-left: 2px;
+  margin-right: 5px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.removeBtn:hover {
+  background: url(images/minus-hover.png) no-repeat center;
+  background-size: contain;
+  min-width: 20px;
+}
+
+.mName, .basic, .defences-1, .defences-2, .meleeFull, .aspects,
+.feats, .specialAttacks, .specialAbilities, .languages, .sq,
+.rangedFull, .combatManeuvers, .speedSpaceReach {
+  padding: 10px;
+  border-bottom: 2px solid #494988;
+}
+
+.DR, .SR, .init, .size, .hp, .resist, .CMB, .speed, .space, .immune {
+  margin-right: 15px;
+}
+
+.mName {
+  font-size: 22px;
+  color: orange;
+}
+
+.attrNames::before {
+  color: #97dffb;
+}
+
+.hp::before {
+  content: 'Max HP: ';
+}
+
+.aura::before {
+  content: 'Aura: ';
+}
+
+.init::before {
+  content: 'Init: ';
+}
+
+.size::before {
+  content: 'Size: ';
+}
+
+.type::before {
+  content: 'Type: ';
+}
+
+.DR::before {
+  content: 'DR: ';
+}
+
+.immune::before {
+  content: 'Immune: ';
+}
+
+.SR::before {
+  content: 'SR: ';
+}
+
+.resist::before {
+  content: 'Resist: ';
+}
+
+.weaknesses::before {
+  content: 'Weaknesses: ';
+}
+
+.speed::before {
+  content: 'Speed: ';
+}
+
+.meleeFull::before {
+  content: 'Melee: ';
+}
+
+.rangedFull::before {
+  content: 'Ranged: ';
+}
+
+.specialAbilities::before {
+  content: 'Special Abilities: ';
+}
+
+.specialAttacks::before {
+  content: 'Special Attacks: ';
+}
+
+.languages::before {
+  content: 'Languages: ';
+}
+
+.sq::before {
+  content: 'SQ: ';
+}
+
+.feats::before {
+  content: 'Feats: ';
+}
+
+.CMB::before {
+  content: 'CMB: ';
+}
+
+.CMD::before {
+  content: 'CMD: ';
+}
+
+.space::before {
+  content: 'Space: ';
+}
+
+.reach::before {
+  content: 'Reach: ';
+}
+
+.defensiveAbilities::before {
+  content: 'Def. Abilities: ';
+}
+
+.abilities {
+  color: #ed82ff;
+}
+
+@media (max-width: 1300px) {
+  .centerMenu {
+    min-width: 450px;
+  }
+  .monsterShort {
+    width: 380px;
+  }
+  .monsterShort .monsterAC {
+    width: 16px;
+  }
+  .rightMenu {
+    /* width: calc(100% - var(--leftMenu-min-width) - var(--centerMenu-min-width-media-1300)); */
+    width: calc(100% - var(--leftMenu-min-width))-450px;
+  }
+}
+
+/* -----------Old version------------- */
+/* @media (max-width: 1300px) { */
+/* li {
+        font-size: 12px;
+    }
+
+    .leftMenu {
+        min-width: calc(390px - 70px - 20px); 
+    }
+
+    .playerNames {
+        min-height: 363px;
+    }
+
+    .nameWrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+        border: 1px solid rgb(31, 116, 185);
+        padding: 5px;
+        border-top: none;
+    } */
+/*     
+    .nameWrapper:last-of-type {
+        border-bottom: none;
+    }
+
+    .pName {
+        width: 120px;
+    }
+    
+    .AC {
+        order: 5;
+    } */
+/* .centerMenu {
+        min-width: calc(580px - 154px);
+    }
+
+    .rightMenu {
+        width: calc(100% - 580px - 147px)
+    }
+
+    .monsterAC {
+        width: 16px;
+    }
+
+    .atkResult {
+        height: 165px;
+    }
+
+    .database {
+        max-height: 100px;
+        min-height: 150px;
+    }
+
+    .removeBtn {
+        order: 6;
+    } 
+}*/
+/* 
+@media (max-width: 1000px) {
+
+    .leftMenu {
+        min-width: 270px;
+    }
+
+    .playerNames {
+        min-height: 310px;
+        margin-bottom: 0;
+    }
+
+    .nameWrapper:last-of-type {
+        padding-bottom: 0;
+    }
+
+    .pName {
+        font-size: 14px;
+    }
+
+    .pName,
+    .AC,
+    .bonusOrPenalty {
+        border: 2px solid #0094ff;
+        padding: 5px;
+    }
+
+    .AC,
+    .bonusOrPenalty {
+        font-size: 12px;
+    }
+
+    .centerMenu {
+        min-width: 100px;
+    }
+
+    .monsterShort {
+        padding-bottom: 0;
+        width: 290px;
+    }
+
+    .monsterName {
+        font-size: 16px;
+    }
+
+    .monsterHP,
+    .monsterAC {
+        font-size: 12px;
+    }
+
+    .monsterHP {
+        width: 20px;
+    }
+
+    .monsterAC {
+        width: 14px;
+    }
+
+    .attackLine {
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    }
+
+    .encounter {
+        padding: 1px;
+    }
+
+    .atkResult {
+        font-size: 14px;
+        margin-top: 3px;
+    }
+
+    .rightMenu {
+        width: calc(100% - 580px - 30px);
+        font-size: 14px;
+    }
+
+    .database {
+        min-height: 200px;
+    }
+
+    .rollAttack, 
+    .rollRangedAttack, 
+    .rollSavingThrow,
+    .disabledMelee,
+    .disabledRanged,
+    .baseCMB,
+    .sneakAttack {
+        width: 30px;
+        height: 30px;
+    }
+
+    .closeBtn {
+        width: 15px;
+        height: 15px;
+    }
+
+    .damageMonster {
+        font-size: 12px;
+        width: 270px;
+        margin: 0 19px;
+    }
+    
+    ::-webkit-input-placeholder { 
+        font-size: 12px;
+    }
+
+    ::-moz-placeholder {
+        font-size: 12px;
+    }
+
+    :-ms-input-placeholder { 
+        font-size: 12px;
+    }
+
+    :-moz-placeholder {
+        font-size: 12px;
+    }
+
+    .mName {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .rightMenu {
+        overflow: hidden;
+    }
+} */
+/*# sourceMappingURL=styles.css.map */
