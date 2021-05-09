@@ -668,6 +668,7 @@ function addSearchListener() {
     searchBar.addEventListener('keypress', function(e) {
 
         if (e.key === 'Enter') {
+
             for (let monster of monsters) {
                 monster.classList.remove('hidden');
 
