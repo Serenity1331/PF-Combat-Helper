@@ -224,6 +224,7 @@ body {
   min-height: 210px;
   max-height: calc(100% - 225px - var(--players)*41px);
   overflow: hidden;
+  background-color: black;
 }
 
 ::-webkit-input-placeholder {
