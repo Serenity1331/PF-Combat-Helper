@@ -2,7 +2,7 @@
 
 function showMonsters() {
 
-    fetch('./dbFiles/Bestiary_Names_Only.xml')  // second file with data should be added later
+    fetch('./dbFiles/Bestiary_Names_Only.xml')
     .then(res => res.text())
     .then(data => {
         let parser = new DOMParser();
@@ -12,7 +12,7 @@ function showMonsters() {
         let lst = [];
 
         monsters.forEach(monster => lst.push([monster.children[0].innerHTML, monster.children[1].innerHTML]));
-        let sorted = lst.sort();    // not sure if it works correctly
+        let sorted = lst.sort(); 
 
         for (let name of sorted) {
 
@@ -28,18 +28,14 @@ function showMonsters() {
     });
 }
 
-    // Probably the main root function
 function addClickListener(elem) {
 
     elem.addEventListener('click', async function() {
         let id = elem.getAttribute('monsterId');
         let data = await extractData(id);
         createMonsterFieldset(data);
-    });
-
-    // to add 'Enter' as a way to choose a monster
+    });    
 }
-
 
 function showFullMonsterData(obj) {
     
@@ -92,9 +88,6 @@ function createMonsterFieldset(data) {
     attackFields.appendChild(secondField);
     attackFields.appendChild(thirdField);
 
-    // if (thirdField) {
-    //     attackFields.appendChild(thirdField);
-    // }
     attackFields.classList.add('attackFields');
 
     fSet.appendChild(closeBtn);
@@ -123,7 +116,7 @@ function capitalize(str) {
 
 
 function createAttackBtns(object, attackType, specialAttacks = null, attackNumber = 0) {
-    // this "object" is not equal to whole monster object
+    // this "object" is not equal to the whole monster object
 
     let div = document.createElement("div");
     attackType === 'Ranged' ? div.classList.add("rollRangedAttack") : div.classList.add("rollAttack");
@@ -307,7 +300,6 @@ function disableBtn(e) {
         classes.remove('rollRangedAttack');
         classes.add('disabledRanged');
     }
-
 }
 
 function enableBtn(e) {
@@ -325,8 +317,7 @@ function enableBtn(e) {
     }
 }
 
-
-// Saves names and ACs
+// Save names and ACs
 function saveData() {
     let nameWrappers = document.querySelectorAll('.nameWrapper');
     let players = [];
@@ -338,7 +329,6 @@ function saveData() {
         for (let elem of nameWrapper.children) {
             obj[elem.name] = elem.value;
         }
-        // localStorage.setItem(name, JSON.stringify(obj));
         players.push(JSON.stringify(obj));
     }
 
@@ -375,14 +365,6 @@ function setPlayerNumberToRoot() {
     document.documentElement.style.setProperty("--players", `${numOfPlayers}`);
 }
 
-// function loadDataListener() {
-//     let btn = document.querySelector('.loadData');
-
-//     btn.addEventListener('click', function() {
-//         loadData();
-//     })
-// }
-
 function removePlayers() {
     let players = document.querySelectorAll(".nameWrapper");
     for (let p of players) {
@@ -393,7 +375,6 @@ function removePlayers() {
 function loadPlayer(values) {
 
     let { pName, standardAC, touchAC, ffAC, bonusOrPenalty } = values;
-
     let playerString = 
     `<div class="nameWrapper">
         <input type="text" class="pName" name="pName" autocomplete="off" placeholder="Character Name" value=${pName}>
@@ -430,6 +411,7 @@ function recoverAttacksListener() {
 }
 
 function addNewPlayer() {
+    // some repeating code, should refactor later
     let playerString = 
         `<div class="nameWrapper">
         <input type="text" class="pName"            name="pName"        autocomplete="off" placeholder="Character Name">
@@ -442,7 +424,6 @@ function addNewPlayer() {
     let playerNames = document.querySelector('.playerNames');
     playerNames.insertAdjacentHTML('beforeend', playerString);
     choosePlayerListener();
-    // let num = +getComputedStyle(document.documentElement).getPropertyValue("--players") + 1;
     setPlayerNumberToRoot();
 
     let closeBtn = createRemoveBtn();
@@ -463,7 +444,6 @@ function init() {
     addNewPlayerListener();
     addSearchListener();
     saveDataListener();
-    // loadDataListener();
     choosePlayerListener();
     removePlayerListener();
     recoverAttacksListener()
@@ -751,7 +731,6 @@ function choosePlayer(e) {
     let elem = e.target;
 
     if (elem.classList.contains('AC')) {
-        // elem.parentNode.classList.toggle('blue');
         
         elem.setAttribute("chosen", "true");
         elem.classList.toggle('blue');
@@ -841,7 +820,7 @@ function createFirstDataField(obj) {
 function decodeSneakAttack(str) {
  
     if (str === null) return null;
-    let matched = str.match(/sneak attack (\+\d+d\d+)|\((\+\d+d\d+)\)/i); //( plus \d+ [a-zA-z]+)
+    let matched = str.match(/sneak attack (\+\d+d\d+)|\((\+\d+d\d+)\)/i);
     if (matched === null) return null;
  
     console.log(matched);
